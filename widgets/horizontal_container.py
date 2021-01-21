@@ -1,5 +1,7 @@
 from PyQt5.QtWidgets import *
+from PyQt5.Qt import *
 from .mail_list import MailListWidget
+from .email_reader import EmailReader
 
 
 class HorizontalContainer(QWidget):
@@ -8,16 +10,23 @@ class HorizontalContainer(QWidget):
         self.__init_ui()
 
     def __init_ui(self):
-        h_layout = QHBoxLayout()
+        # h_layout = QHBoxLayout()
+        grid_layout = QGridLayout()
 
         mail_list = MailListWidget()
+        mail_list.setMaximumWidth(300)
         mail_list_2 = MailListWidget()
-        mail_list_3 = MailListWidget()
+        mail_list_2.setMaximumWidth(300)
+        # mail_list_3 = MailListWidget()
+        email_reader = EmailReader()
 
-        h_layout.setContentsMargins(0, 0, 0, 0)
-        h_layout.setSpacing(0)
-        h_layout.addWidget(mail_list)
-        h_layout.addWidget(mail_list_2)
-        h_layout.addWidget(mail_list_3,2)
+        grid_layout.setContentsMargins(0, 0, 0, 0)
+        grid_layout.setSpacing(0)
 
-        self.setLayout(h_layout)
+        # addWidget (self, QWidget, row, column, rowSpan, columnSpan, Qt.Alignment alignment = 0)
+        # grid_layout.addWidget(mail_list, 0, 0, 1, 1)
+        grid_layout.addWidget(mail_list, 0, 0, 0, 1)
+        grid_layout.addWidget(mail_list_2, 0, 1, 0, 1)
+        grid_layout.addWidget(email_reader, 0, 2, 0, 2)
+
+        self.setLayout(grid_layout)

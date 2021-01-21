@@ -1,4 +1,3 @@
-from PyQt5.QtWidgets import *
 from PyQt5.Qt import *
 from .mail_card import MailCard
 
@@ -13,27 +12,33 @@ class MailListWidget(QScrollArea):
         self.init_ui()
 
     def init_ui(self):
-        for i in range(1,3):
+        self.__set_vbox_settings()
+        self.__set_scroll_area_settings()
+
+        for i in range(1, 200):
             card = MailCard()
             self.vbox.addWidget(card)
             card.setAutoFillBackground(True)
-            # card.setStyleSheet(f"background-color: white;")
             card.setStyleSheet(f"background-color: white;"
                                "background-color: rgb(255, 255, 255);"
                                "border-radius: 7px;"
                                )
+            card.setMaximumHeight(100)
+            card.setMinimumHeight(100)
 
         self.widget.setLayout(self.vbox)
-        # self.widget.setMinimumWidth(325)
 
+    def __set_scroll_area_settings(self):
         # Scroll Area Properties
-        self.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
+        self.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.setWidgetResizable(True)
 
-
-        self.setMinimumHeight(100)
-        self.setMaximumHeight(125)
         self.setMinimumWidth(300)
-        self.setMaximumWidth(300)
         self.setWidget(self.widget)
+        self.setContentsMargins(5, 5, 5, 5)
+
+    def __set_vbox_settings(self):
+        self.vbox.setContentsMargins(5, 5, 5, 5)
+        self.vbox.setSpacing(5)
+        self.vbox.setStretch(0, 0)

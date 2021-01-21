@@ -13,6 +13,7 @@ class SplashScreen(QSplashScreen):
         self.setWindowTitle("Hello world - pythonprogramminglanguage.com")
 
         self.setWindowFlags(Qt.FramelessWindowHint)
+        self.__center_screen()
 
         grid_layout = QGridLayout(self)
         self.setLayout(grid_layout)
@@ -31,6 +32,12 @@ class SplashScreen(QSplashScreen):
         self.__create_databases(database)
         self.__load_accounts(database)
         return True
+
+    def __center_screen(self):
+        qt_rectangle = self.frameGeometry()
+        center_point = QDesktopWidget().availableGeometry().center()
+        qt_rectangle.moveCenter(center_point)
+        self.move(qt_rectangle.topLeft())
 
     def __create_databases(self, database):
         self.loading_label.setText('Checking Database Integrity...')

@@ -1,7 +1,6 @@
 from tkinter import *
 from database import Database
 from PyQt5.QtWidgets import QApplication, QLabel
-from email_handler.imap_handler import IMAPHandler
 import sys
 from widgets.splash_screen import SplashScreen
 from widgets.main_window import PulsarMain
@@ -27,16 +26,6 @@ def createAccountFrame(TopLevel):
     composeButton.pack()
     return frame
 
-
-# def createSideBar(window):
-#     canvas=Canvas(window,bg='#FFFFFF',width=300,height=300,scrollregion=(0,0,500,500))
-#     vertical_scrollbar = Scrollbar(canvas, orient=tk.VERTICAL)
-#     vertical_scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
-#     vertical_scrollbar.config(command=canvas.yview)
-#     canvas.config(width=300,height=300)
-#     canvas.config(yscrollcommand=vertical_scrollbar.set)
-#     return canvas
-
 def createMessageWidget(window):
     return Text(master=window, width=50, height=50, bg="white")
 
@@ -47,27 +36,6 @@ def start_pulsar():
     splash.show()
 
     sys.exit(app.exec_())
-
-    # #Main Window
-    # Toplevel = Tk()
-    # Toplevel.title("Pulsar")
-    # Toplevel.minsize(500,500)
-    #
-    # #TopBar
-    # topBar = createTopBar(Toplevel)
-    # topBar.grid(row=0)
-    #
-    # # Left Side Bar
-    # accountFrame = createAccountFrame(Toplevel)
-    # accountFrame.grid(row=1, column=0, columnspan=6)
-    #
-    # # Middle Frame (Mail List)
-    #
-    # # Right Side Frame (Detailed Message)
-    # messageWidget = createMessageWidget(Toplevel)
-    # messageWidget.grid(row=1, column=7, columnspan=2)
-    #
-    # Toplevel.mainloop()
 
 
 if __name__ == "__main__":
